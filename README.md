@@ -1,7 +1,7 @@
 # Faux lambda Calculus Interpreter
 A simple interpreter made using Racket.
 ### What is Lambda Calculus?
-In simple terms it is a model of computation that has a sets of rules of which can compute anything.
+In simple terms it is a model of computation that has a set of rules of which can compute anything.
 Here is the grammar:
 ```
 <expr> = <num>
@@ -10,8 +10,8 @@ Here is the grammar:
 ```
 Basically, an expression in this model can be one of three things:
 
-A `num` is a number that represents a variable. A number is easier to work with than letters since the latter can cause naming collisions between scopes. 
-The value of a `num` represents where it is bound (basically the definition of the variable). This convention is called [De Bruijn indices](https://en.wikipedia.org/wiki/De_Bruijn_index).
+A `num`, which is a number that represents a variable. A number is easier to work with than letters since the latter can cause naming collisions between scopes. 
+The value of a `num` represents where it is bound (basically the definition of this variable). This convention is called [De Bruijn indices](https://en.wikipedia.org/wiki/De_Bruijn_index).
 
 An abstraction, denoted by `(abs <expr>)` is essentially another `<expr>` wrapped around a binder. In simple terms, when `<expr>` is given a definition, `<expr>2`, through application,
 it will change all variables in `<expr>` that references `<expr>` to `<expr>2` to that expression. Mathematically, it is represented as `λx.[expr]` where `x`
@@ -36,4 +36,4 @@ If we want to compute "True And False":
 ```
 (app (app And True) False) => (app (app True False) False) => False
 ```
-
+From here logical operators like `Or` and `Not` can be defined. Then other operations derived in an inductive-like fashion.
