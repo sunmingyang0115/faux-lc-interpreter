@@ -1,4 +1,4 @@
-# Faux lambda Calculus Interpreter
+# Faux Lambda Calculus Interpreter
 A simple interpreter made using Racket.
 ### What is Lambda Calculus?
 In simple terms it is a model of computation that has a set of rules of which can compute anything.
@@ -20,7 +20,7 @@ is a variable and `[expr]` being the `<expr>`. It uses `λ` (lambda) which is wh
 Lastly there is application, `(app <expr>1 <expr>2)`, which means we pass `<expr>1` the definition `<expr>2`. Whenever `<expr>1` is evaluated, it will be in the form `(abs <expr>)`,
 which expects a definition, which will be `<expr>2`. This is how abstractions are given definitions.
 
-### Some Simple Computations:
+### Some Simple Computations
 We can define `True` and `False` as:
 ```
 True := (abs (abs 2))
