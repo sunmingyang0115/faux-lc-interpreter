@@ -32,3 +32,8 @@ From then the logical operator `And` can be derived:
 ```
 And := (abs (abs (app (app 2 1) False)))
 ```
+If we want to compute "True And False":
+```
+(app (app And True) False) => (app (app True False) False) => False
+```
+
