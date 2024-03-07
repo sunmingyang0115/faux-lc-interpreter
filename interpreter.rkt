@@ -1,5 +1,6 @@
 #lang racket
-(require test-engine/racket-tests)
+
+(provide interp abs app)
 
 #|
 expr = abs expr | app expr expr | number
@@ -7,8 +8,6 @@ expr = abs expr | app expr expr | number
 
 (define-struct abs(e) #:transparent)
 (define-struct app(e1 e2) #:transparent)
-
-
 
 (define (update-index exp d ld)
   (match exp
@@ -37,17 +36,3 @@ expr = abs expr | app expr expr | number
      (match (interp e1)
        [(abs e1-cl) (interp (beta-reduce e1-cl e2 1))])]
     [x x]))
-
-; completely inadequate tests
-
-(define t (abs (abs 2)))
-(define f (abs (abs 1)))
-(define and (abs (abs (app (app 2 1) f))))
-
-(check-expect (interp (app (app and t) t)) t)
-(check-expect (interp (app (app and f) t)) f)
-(check-expect (interp (app (app and t) f)) f)
-(check-expect (interp (app (app and f) f)) f)
-
-(test)
-
